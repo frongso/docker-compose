@@ -1,23 +1,23 @@
 CREATE TABLE Roles (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(50) NOT NULL,
+  rolename VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Users (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(32) NOT NULL,
-  password VARCHAR(32) NOT NULL,
+  userpassword VARCHAR(32) NOT NULL,
   firstname VARCHAR(45) NOT NULL,
   lastname VARCHAR(45) NOT NULL,
-  email VARCHAR(255),
+  email VARCHAR(255)
 );
 
 CREATE TABLE Projects (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(45) NOT NULL,
-  desc VARCHAR(45),
+  projectname VARCHAR(45) NOT NULL,
+  projectdesc VARCHAR(45),
   create_at DATETIME NOT NULL,
-  edited_at DATETIME NOT NULL,
+  edited_at DATETIME NOT NULL
 );
 
 CREATE TABLE User_Role (
@@ -35,7 +35,7 @@ CREATE TABLE User_Role (
 
 CREATE TABLE Permissions (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(45) NOT NULL
+  permissionname VARCHAR(45) NOT NULL
 );
 
 CREATE TABLE Role_Permission (
@@ -45,19 +45,19 @@ CREATE TABLE Role_Permission (
   FOREIGN KEY (Role_id) REFERENCES Roles(id)
       ON DELETE CASCADE,
   FOREIGN KEY (Permission_id) REFERENCES Permissions(id)
-      ON DELETE CASCADE,
+      ON DELETE CASCADE
 );
 
 CREATE TABLE Tasks (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(45) NOT NULL,
-  desc VARCHAR(45) NULL,
+  taskname VARCHAR(45) NOT NULL,
+  taskdesc VARCHAR(45) NULL,
   create_at DATETIME NOT NULL,
   edited_at DATETIME NOT NULL,
-  status VARCHAR(45) NULL,
+  taskstatus VARCHAR(45) NULL,
   Project_id INT NOT NULL,
   FOREIGN KEY (Project_id) REFERENCES Projects(id)
-      ON DELETE CASCADE,
+      ON DELETE CASCADE
 );
 
 CREATE TABLE User_Project (
@@ -67,7 +67,7 @@ CREATE TABLE User_Project (
   FOREIGN KEY (Project_id) REFERENCES Projects(id)
       ON DELETE CASCADE,
   FOREIGN KEY (User_id) REFERENCES Users(id)
-      ON DELETE CASCADE,
+      ON DELETE CASCADE
 );
 
 CREATE TABLE User_Task (
@@ -77,12 +77,12 @@ CREATE TABLE User_Task (
   FOREIGN KEY (Task_id) REFERENCES Tasks(id)
       ON DELETE CASCADE,
   FOREIGN KEY (User_id) REFERENCES Users(id)
-      ON DELETE CASCADE,
+      ON DELETE CASCADE
 );
 
 CREATE TABLE Comment (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-  text VARCHAR(300) NULL,
+  commenttext VARCHAR(300) NULL,
   create_at DATETIME NOT NULL,
   edited_at DATETIME NOT NULL,
   Comment_by INT NOT NULL,
@@ -90,7 +90,7 @@ CREATE TABLE Comment (
   FOREIGN KEY (Task_id) REFERENCES Tasks(id)
       ON DELETE CASCADE,
   FOREIGN KEY (Comment_by) REFERENCES Users(id)
-      ON DELETE CASCADE,
+      ON DELETE CASCADE
 );
 
 
