@@ -16,6 +16,19 @@ services:
     volumes:
       - ./my-db:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  node:
+    build: ./web_demo
+    environment:
+      DATABASE_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: task-management
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: password
+    ports:
+      - '3257:3257'
+    depends_on:
+      - db
+    restart: on-failure
 # Names our volume
 volumes:
   my-db:
