@@ -17,7 +17,7 @@ services:
       - ./my-db:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
   node:
-    build: ./web_demo
+    build: ./web
     environment:
       DATABASE_HOST: db
       MYSQL_PORT: 3306
