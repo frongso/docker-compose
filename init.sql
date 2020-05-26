@@ -93,6 +93,13 @@ CREATE TABLE Comment (
       ON DELETE CASCADE
 );
 
+CREATE TABLE User_Token (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  userId VARCHAR(22) NULL,
+  refreshToken VARCHAR(22) NOT NULL
+);
+
+
 
 
 
