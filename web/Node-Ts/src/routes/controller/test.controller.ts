@@ -2,7 +2,7 @@ import { Controller, Get } from 'routing-controllers';
 
 @Controller()
 export class TestController {
-  @Get('/')
+  @Get('/test')
   hello() {
     return 'hello world';
   }
